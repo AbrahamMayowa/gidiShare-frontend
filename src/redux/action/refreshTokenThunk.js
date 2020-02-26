@@ -1,29 +1,48 @@
 import {beginRefreshAuth, successRefreshAuth, failedRefreshAuth} from '../action/refreshAuth'
 
 
-const fetchRefreshToken = () =>{
+const fetchRefreshToken = (token, id) =>{
     return async (dispatch) => {
 
         try{
-        dispatch.beginRefreshAuth()
-        const resFetch = await fetch('http://localhost:5000/api/refreshToken', {
-            method: 'PUT',
+        dispatch(beginRefreshAuth())
+
+        const graphqlQuery = {
+            query: `
+            mutation refresh($refreshToken: String!, $userId: ID!){
+                refreshToken(refreshToken: $refreshToken, userId: $userId){
+                    expiresIn
+                    token
+                    username
+                    imageUrl
+                }
+            }
+            `,
+            variables: {
+                refreshToken: token,
+                userId: id
+            }
+        }
+        const resFetch = await fetch('http://localhost:5000/graphql', {
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
-            }
+            },
+            body: JSON.stringify(graphqlQuery)
         })
 
-        if(!resFetch.ok){
-            if(resFetch.status === 401){
-                throw new Error('Not authenticated')
-            }
-            throw new Error('User not found')
-        }
-
         const data = await resFetch.json()
-        dispatch.successRefreshAuth(data)  
+
+        if(data.errors){
+            if(data.errors[0].status === 401){
+                throw new Error('Please log in to your account')
+            }
+            throw new Error('The login user is not exist')
+        }
+        
+        dispatch(successRefreshAuth(data))  
     }catch(error){
-        dispatch.failedRefreshAuth(error)
+        dispatch(failedRefreshAuth(error))
     }
 }
 }

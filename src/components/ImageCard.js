@@ -1,53 +1,90 @@
-import React from 'react'
-import avatar from '../../public/avatar.svg'
-import Cookies from 'js-cookie'
+import React, {useEffect} from 'react'
+import {useSelector} from 'react-redux'
+import '../styles/imageCard.css'
+import moment from 'moment'
 
 
 const ImageCard = (props) =>{
+    const authError = useSelector(store => store.images.error) 
+    const userId = useSelector(store => store.auth.userId)
+    useEffect(()=>{
+        if(authError === 'You are not authorized'){
+            props.handleLogin()
+        }
+    }, [authError])
     
     const image = props.image
+    const createdTime = new Date(parseInt(image.createdAt)).toJSON()
+    const momentTime = moment(createdTime).fromNow()
     let thumpUpUser = null
     let thumpDownUser = null
-    // check for the refreshToken to check authenticated user
-    if(Cookies.get('refreshToken')){
-        const cookieId = Cookies.get('refreshToken').userId
-        // only thumped up image is looped
-        if(image.thumpup.thumpUpCount > 0){
-            thumpUpUser = image.thumpup.userActionThumpUp.find(id => id === cookieId)
-        }
 
-        if(image.thumpdown.thumpDownCount > 0){
-            thumpDownUser = image.thumpdown.userActionThumpDown.find(id => id === cookieId)
-        }
-    }
 
+        // check if user is authenticated to know if the user had thumped the image
+        if(userId && image){
+                thumpUpUser = !!image.thumpUp.userActionThumpUp.find(id => id._id === userId)
+            }
+            
+            if(image.thumpDown.userActionThumpDown){
+                thumpDownUser = !!image.thumpDown.userActionThumpDown.find(id => id._id === userId)
+            }
 
     return(
-            <div>
+            <div key={image.imageId} className={'card-wrapper ' + (props.isDetailsCard && 'details_card' )} onClick={() => {
+                if(props.detailsRedirect){
+                    props.detailsRedirect(image.imageId)
+                }
+                    
+            }
+            }
+            >
+
                  <section className='creator'>
-                    <img src={`http://localhost:5000/${image.creator.imageUrl}`}/>
+                    <div className='creator-image-wrapper'>
+                        <img src={`http://localhost:5000/static/${image.creator.imageUrl}`} alt='creator'/> 
+                    </div>
                     <div className='username'>{image.creator.username}</div>
                 </section>
                     
-
                 <section className='image-url'>
-                    <img src={image.imageUrl} />
+                    <img src={`http://localhost:5000/static/${image.imageUrl}`} alt="share"/>
                 </section>
 
                 <section className='data-description'>
-                    <div className={'thump-count ' + thumpUpUser ? 'thumped' : ''}>
-                        {image.thumpup.thumpUpCount}
+                    <div className='thump'>
+                        <div className="thump" onClick={(e) =>{
+                            e.stopPropagation()
+                            props.handleThumpUp(image.imageId)
+                        }}>
+
+                        <i className={"far fa-thumbs-up thumpup-icon " + (thumpUpUser ? 'thumped' : '')}></i>
+                        <div className='thump-count '>
+                            {image.thumpUp.thumpUpCount}
+                        </div>
+
+
+                        </div>
+                        <div className='thump' onClick={(e)=>{
+                            e.stopPropagation()
+                            props.handleThumpDown(image.imageId)
+                        }}>
+                        <i class={"far fa-thumbs-down thumpdown-icon " + (thumpDownUser ? 'thumped' : '')}></i>
+                        <div className='thump-count '>
+                        {image.thumpDown.thumpDownCount}
+                        </div>
+                        </div>
+
                     </div>
 
-                    <div className={'thump-count ' + thumpDownUser ? 'thumped' : ''}>
-                        {image.thumpdown.thumpDownCount}
+                    <div className='description'>
+                        {image.description}
                     </div>
-                    
-                    <div className='time-category'>
-                        <span>{image.createdAt.toISOString()}</span>
-                        <span>{image.category}</span>
-                    </div>
+                
                 </section>
+                <div className='time-category'>
+                        <div className='moment-time'>{momentTime}</div>
+                        <div className='category'>{image.category}</div>
+                </div>
             </div>
         )
 }

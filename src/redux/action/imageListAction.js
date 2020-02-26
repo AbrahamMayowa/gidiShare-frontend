@@ -8,17 +8,17 @@ export const startFetchList = () =>{
     }
 }
 
-export const successFetchList = (result) =>{
+export const successFetchList = (images) =>{
     return {
         type: SUCCESS_FETCH_LIST,
-        payload: result
+        payload: {images}
     }
 }
 
 export const failFetchList = (error) =>{
     return {
         type: FAIL_FETCH_LIST,
-        payload: error
+        payload: {error}
     }
 }
 

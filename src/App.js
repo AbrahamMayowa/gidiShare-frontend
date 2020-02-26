@@ -1,31 +1,18 @@
-import React from 'react';
-import Images from '../src/screen/ImageList'
+import React, { useState, useEffect } from 'react'
 import {Provider} from 'react-redux'
-import store from './redux/store'
+import {NavLink} from 'react-router-dom'
+import {PersistGate} from 'redux-persist/integration/react'
+import {store, persistor} from './redux/store'
+import Loading from './components/Loading'
+import ScreenWrapper from './screen/ScreenWrapper'
+
 
 function App() {
-  const auth = localStorage.getItem('auth')
-
-  let loginAndLogout = (<div>
-    <li className="login">Login</li>
-    <li className="signup">Signup</li> 
-  </div>)
-
-
-
-
-
   return (
     <Provider store={store}>
-    <React.Fragment>
-      <nav className='nav-wrapper'>
-        <ul>
-          <li>gidiShare</li>
-          {auth ? <li className="logout">Logout</li> : loginAndLogout}
-        </ul>
-      </nav>
-    </React.Fragment>
-  
+      <PersistGate loading={<Loading />} persistor={persistor}>
+       <ScreenWrapper />
+      </PersistGate >
   </Provider>
   )
 }

@@ -1,0 +1,9 @@
+.no-item{
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Didact Gothic';
+    font-size: 24px;
+    color: black;
+}

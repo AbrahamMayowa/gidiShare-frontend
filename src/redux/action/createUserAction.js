@@ -8,18 +8,18 @@ export const createUserStartDispatch = () =>{
     return {
         type: CREATE_USER_START
     }
-} 
+}
 
-export const createUserSuccessDispatch = (userData) =>{
+export const createUserSuccessDispatch = (newUser) =>{
     return {
         type: CREATE_USER_SUCCESS,
-        payload: userData
+        payload: newUser
     }
 } 
 
-export const createUserFailDispatch = (error) =>{
+export const createUserFailDispatch = (createError) =>{
     return {
         type: CREATE_USER_FAIL,
-        payload: error
+        payload: createError
     }
 }

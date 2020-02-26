@@ -1,0 +1,179 @@
+.card-wrapper{
+    width: 80%;
+    height: 300px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    margin-top: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    cursor: pointer;
+    
+}
+
+.details_card{
+    height: 500px;
+    width: 90%;
+    position: relative;
+    z-index: 1;
+}
+
+.details_card .image-url{
+    width: 100%;
+    height: 300px;
+    background-color: violet;
+    overflow: hidden;
+    margin-top: 8px;
+}
+
+.details_card .data-description{
+    width: 100%;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+
+}
+.details_card .description{
+    padding: 6px;
+    font-family: 'Didact Gothic';
+    white-space: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+}
+
+
+.creator{
+    display: flex;
+    width: 100%;
+    height: 30px;
+    align-items: center;
+}
+
+.creator .username{
+    font-weight: 800;
+    font-size: 15px;
+    font-family: 'Alata';
+    
+}
+
+.creator-image-wrapper{
+    width: 27px;
+    height: 27px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-left: 6px;
+    margin-right: 6px;
+}
+
+.creator-image-wrapper img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+.image-url{
+    width: 100%;
+    height: 200px;
+    background-color: violet;
+    overflow: hidden;
+    margin-top: 8px;
+}
+
+.image-url img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+}
+
+
+.thump{
+    display: flex;
+    justify-content: baseline;
+    margin-top: 8px;
+    cursor: pointer;
+}
+
+.thumpup-icon{
+    margin-left: 8px;
+    color: black;
+}
+
+.thumpdown-icon{
+    margin-left: 24px;
+    color: black;
+
+}
+
+.thump-count{
+    margin-left: 6px;
+}
+
+.thumped{
+    color: #c94c4c;
+}
+
+.data-description{
+    width: 100%;
+    height: 80px;
+
+}
+
+.description{
+    padding: 6px;
+    font-family: 'Didact Gothic';
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+}
+
+.time-category{
+    display: flex;
+    justify-content: space-between;
+    bottom: 0;
+    margin-top: 12px;
+}
+
+.moment-time{
+    color:  darkkhaki;
+    font-size: 12px;
+}
+
+.category{
+    font-family: 'Dekko';
+}
+
+
+@media only screen and (min-width: 700px) {
+    .card-wrapper{
+        height: 450px;
+        width: 50%;
+
+    }
+
+    .details_card{
+        height: 800px;
+    }
+
+    .details_card .image-url{
+        height: 500px;
+    }
+
+    .details_card .data-description{
+        width: 100%;
+        height: 250px;
+    
+    }
+
+    .creator{
+        height: 50px;
+    }
+
+
+    .image-url{
+        height: 350px;
+    }
+}
