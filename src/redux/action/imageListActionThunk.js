@@ -45,7 +45,7 @@ const imageListThunk = () => {
         })
 
         const resData = await response.json()
-        console.log(resData)
+      
 
         if(resData.errors){
             if(resData.errors[0].status === 404){
@@ -55,10 +55,8 @@ const imageListThunk = () => {
         }
 
         dispatch(successFetchList(resData))
-        //console.log(resData)
     }catch(error){
         dispatch(failFetchList(error))
-        console.log(error)
     }
 
 

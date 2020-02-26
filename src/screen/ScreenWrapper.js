@@ -34,20 +34,15 @@ function ScreenWrapper() {
   useEffect(()=>{
       setOpenLogininModal(false)
   }, [isAuth])
+
+
+  const dispatchRefresh = ()=>{
+    dispatch(refreshTokenThunk(refreshToken, userId))
+  }
+
     
 
-  useEffect(()=> {
-    /// refreshToken setInterval
-  //set setInterval for to get new token after successfully logIn
-    const dispatchRefresh = ()=>{
-      dispatch(refreshTokenThunk(refreshToken, userId))
-    }
-
-    if(refreshToken){
-      let timeoutId = setInterval(dispatchRefresh, 720000)
-      return ()=> clearTimeout(timeoutId)
-    }
-
+useEffect(()=>{
     // create new valid token when the expiration time has passed
     if(refreshToken){
       let newTokenTimeout
@@ -58,8 +53,15 @@ function ScreenWrapper() {
         return ()=> clearTimeout(newTokenTimeout)
       }
     }
+}, [])
 
-
+  useEffect(()=> {
+    /// refreshToken setInterval
+  //set setInterval for to get new token after successfully logIn
+    if(refreshToken){
+      let timeoutId = setInterval(dispatchRefresh, 720000)
+      return ()=> clearTimeout(timeoutId)
+    }
   }, [refreshToken])
 
   const handleLoginModal = () =>{
