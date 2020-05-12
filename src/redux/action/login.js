@@ -22,7 +22,7 @@ export const loginSuccess = (result) =>{
 export const loginFail = (loginError) =>{
     return {
         type: LOGIN_FAIL,
-        payload: {loginError}
+        payload: loginError
     }
 }
 

@@ -28,7 +28,7 @@ const Header = (props)=>{
         const propsImage = props.userImageUrl
         let userImage = "/avatar.svg"
         if(propsImage){
-            userImage = `http://localhost:5000/static/${propsImage}`
+            userImage = `/static/${propsImage}`
         }
         setUserImageUrl(userImage)
         

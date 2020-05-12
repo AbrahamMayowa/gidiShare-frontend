@@ -38,7 +38,7 @@ const singleImageFetch = id =>{
             }
         }
 
-        const response = await fetch('http://localhost:5000/graphql',{
+        const response = await fetch('/graphql',{
             method:'POST',
             headers: {
                 'Content-Type': 'application/json'

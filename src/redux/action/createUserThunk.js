@@ -8,7 +8,7 @@ const createUserThunk = (username, password, image) =>{
         try{
         dispatch(createUserStartDispatch())
         console.log('starting')
-        const res = await fetch('http://localhost:5000/api/create-user', {
+        const res = await fetch('/api/create-user', {
             method: 'POST',
             body: formData
 
@@ -46,7 +46,7 @@ const createUserThunk = (username, password, image) =>{
             }
         }
 
-        const graphResponse = await fetch('http://localhost:5000/graphql', {
+        const graphResponse = await fetch('/graphql', {
             method: 'POST',
             headers: {
             'Content-Type': 'application/json'

@@ -125,8 +125,14 @@ const auth = (state=initialState, action) => {
                 loading: false
             }
 
+        case 'CLEAR_ERROR':
+            return{
+                ...state,
+                error: ''
+            }
+
         default: 
-            return state
+            return {...state}
     }
 }
 

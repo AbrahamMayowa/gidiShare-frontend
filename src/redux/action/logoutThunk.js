@@ -12,7 +12,7 @@ const logoutDispatch = (token)=>{
 
         try{
             dispatch(logoutStart())
-    const fetchResponse = await fetch('http://localhost:5000/graphql', {
+    const fetchResponse = await fetch('/graphql', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

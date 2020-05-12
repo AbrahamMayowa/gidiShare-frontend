@@ -25,7 +25,7 @@ const loginActionThunk = (username, password) =>{
         }
 
         try{
-        const response = await fetch('http://localhost:5000/graphql', {
+        const response = await fetch('/graphql', {
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -35,15 +35,17 @@ const loginActionThunk = (username, password) =>{
         })
 
         const resData = await response.json()
-        if(resData.error){
-            if(resData.errors[0].status === 422){
-                throw new Error('Provide valid input')
+    
+        if(resData.errors){
+            if(resData.errors[0].status === 404){
+                throw new Error('Invalid password or username')
             }
             throw new Error('A server error occured!')
         }
 
         dispatch(loginSuccess(resData))
     }catch(error){
+  
         dispatch(loginFail(error))
     }
     }

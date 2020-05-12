@@ -23,7 +23,7 @@ const fetchRefreshToken = (token, id) =>{
                 userId: id
             }
         }
-        const resFetch = await fetch('http://localhost:5000/graphql', {
+        const resFetch = await fetch('/graphql', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

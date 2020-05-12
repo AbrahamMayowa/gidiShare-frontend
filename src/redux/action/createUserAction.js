@@ -10,7 +10,7 @@ export const createUserStartDispatch = () =>{
     }
 }
 
-///home/mayor/gidiShare/.git/
+
 
 export const createUserSuccessDispatch = (newUser) =>{
     return {

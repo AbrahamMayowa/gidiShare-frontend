@@ -7,7 +7,7 @@ const uploadThunk = (image, description, category, token) =>  {
         dispatch(uploadStarts())
         const formData = new FormData()
         formData.append('image', image)
-        const imageFileSave = await fetch('http://localhost:5000/api/upload', {
+        const imageFileSave = await fetch('/api/upload', {
             method: 'PUT',
             headers: {
                 Authorization: 'Bearer ' + token
@@ -59,7 +59,7 @@ const uploadThunk = (image, description, category, token) =>  {
                 category: category
             }
         }
-        const graphqlResponse = await fetch('http://localhost:5000/graphql', {
+        const graphqlResponse = await fetch('/graphql', {
             method: 'POST',
             headers: {
                 Authorization: 'Bearer ' + token,

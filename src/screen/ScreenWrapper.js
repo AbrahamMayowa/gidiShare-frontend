@@ -66,12 +66,14 @@ useEffect(()=>{
 
   const handleLoginModal = () =>{
     if(openLoginModal){
+      dispatch({type: 'CLEAR_ERROR'})
       setOpenLogininModal(false)
     }else{setOpenLogininModal(true)}
   }
 
   const handleSignupModal = () =>{
     if(openSignupModal){
+      dispatch({type: 'CLEAR_ERROR'})
       setOpenSignupModal(false)
 
     }else{setOpenSignupModal(true)}
@@ -79,6 +81,7 @@ useEffect(()=>{
 
   const handleUploadModal = () =>{
     if(openUploadFormModal){
+      dispatch({type: 'CLEAR_ERROR'})
       setOpenUploadFormModal(false)
     }else{
     setOpenUploadFormModal(true)

@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from 'react-redux'
 import {Formik} from 'formik'
 import SyncLoader from './SyncLoader'
 import loginActionThunk from '../redux/action/loginThunk'
+import '../styles/signup.css'
 
 
 const LoginForm = ({handleLogin}) => {
@@ -102,8 +103,9 @@ const LoginForm = ({handleLogin}) => {
                 <div className='cancel-signup-wrapper'>
                     <div className='cancel-signup' onClick={handleLogin}>Cancel</div>
                     <button className='signup-submit' onClick={handleLoginModal} type='submit'>{loading ? <div className='load'><SyncLoader /></div> : 'Submit'}</button>
-                    {error && (<div className='reducer-error'>{error}</div>)}
+                   
                 </div>
+                {error && (<div className='reducer-error'>{error}</div>)}
             </form>
         </div>
     </div>
