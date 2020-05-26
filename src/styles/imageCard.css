@@ -140,10 +140,12 @@
 .moment-time{
     color:  darkkhaki;
     font-size: 12px;
+    margin-left: 7px;
 }
 
 .category{
     font-family: 'Dekko';
+    margin-right: 7px;
 }
 
 
