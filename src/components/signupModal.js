@@ -119,7 +119,7 @@ const SignupForm = ({handleSignup}) => {
                 </div>
                 <div className='cancel-signup-wrapper'>
                     <div className='cancel-signup' onClick={handleSignup}>Cancel</div>
-                    <button className='signup-submit' type='submit'>{loading ? <div className='load'><SyncLoader /></div> : 'Submit'}</button>
+                    <button className='signup-submit' disabled={loading ? true : false} value={loading ? (<div >Loading...></div>) : 'Submit' } type='submit' />
                   
                 </div>
             </form>

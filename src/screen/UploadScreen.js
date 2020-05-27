@@ -146,7 +146,7 @@ const UploadImage = (props) => {
                 {uploadData.image.value && (<div className='image-name'>{uploadData.image.value.name}</div>)}
                 </div>
                 <div className='cancel-signup-wrapper'>
-                    <button className='upload-submit' type='submit'>{loading ? <div className='loading'><SyncLoader /></div> : 'Submit'}</button>
+                    <button className='upload-submit' disabled={loading ? true : false} type='submit'>{loading ? <div style={{color: 'black', fontSize: 15, fontWeight: 'bold'}}>Loading...</div> : 'Submit'}</button>
                 
                 </div>
             </form>

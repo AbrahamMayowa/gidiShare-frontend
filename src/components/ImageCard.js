@@ -41,13 +41,13 @@ const ImageCard = (props) =>{
 
                  <section className='creator'>
                     <div className='creator-image-wrapper'>
-                        <img src={`/static/${image.creator.imageUrl}`} alt='creator'/> 
+                        <img src={image.creator.imageUrl} alt='creator'/> 
                     </div>
                     <div className='username'>{image.creator.username}</div>
                 </section>
                     
                 <section className='image-url'>
-                    <img src={`/static/${image.imageUrl}`} alt="share"/>
+                    <img src={image.imageUrl} alt="share"/>
                 </section>
 
                 <section className='data-description'>

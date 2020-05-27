@@ -45,7 +45,6 @@ const loginActionThunk = (username, password) =>{
 
         dispatch(loginSuccess(resData))
     }catch(error){
-  
         dispatch(loginFail(error))
     }
     }
