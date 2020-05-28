@@ -21,6 +21,7 @@ const Header = (props)=>{
     const handleRedirect = () =>{
         
             //props.handleUpload()
+         
             history.push("/upload")
     }
 

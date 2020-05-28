@@ -93,13 +93,14 @@ const UploadImage = (props) => {
                 ...prevState,
                 image: {error:'Upload a supported photo format', value: ''}
             }))
-        }else if(category.value && description.value && image.value){
+        }else if(category.value && description.value && image.value && token){
             dispatch(uploadThunk(image.value, description.value, category.value, token))
         }
     }
     return (
         <div className='upload-wrapper'>
         <div className="form-main">
+            {!token && <div className='login-warning'>You need to login to upload image. Kindly login now.</div>}
             <div className='upload'>Upload Photo</div>
             
             <form onSubmit={handleSubmit} className='form-control'>
