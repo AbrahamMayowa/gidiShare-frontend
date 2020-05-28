@@ -43,14 +43,15 @@ function ScreenWrapper() {
     
 
 useEffect(()=>{
-    // create new valid token when the expiration time has passed
-    if(refreshToken){
+    // create new valid token when the expiration time has passed on openning the browser
+    if(refreshToken){ 
       let newTokenTimeout
       const expirationDate = new Date(parseInt(expiresIn)).getTime()
       const currentDate = Date.now()
       if(currentDate > expirationDate){
-        newTokenTimeout = setTimeout(dispatchRefresh, 100)
-        return ()=> clearTimeout(newTokenTimeout)
+        //newTokenTimeout = setTimeout(, 100)
+        //return ()=> clearTimeout(newTokenTimeout)
+        dispatchRefresh()
       }
     }
 }, [])
