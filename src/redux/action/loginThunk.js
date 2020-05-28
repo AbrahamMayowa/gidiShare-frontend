@@ -37,7 +37,7 @@ const loginActionThunk = (username, password) =>{
         const resData = await response.json()
     
         if(resData.errors){
-            if(resData.errors[0].status === 404){
+            if(resData.errors[0].status === 422){
                 throw new Error('Invalid password or username')
             }
             throw new Error('A server error occured!')

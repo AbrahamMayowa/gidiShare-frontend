@@ -36,7 +36,7 @@ class Images extends React.Component{
 
     handleThumpUp = (imageId) =>{
         const token = this.props.auth.token
-        console.log(imageId)
+     
         if(!token){
             this.props.handleLogin()
         }else{

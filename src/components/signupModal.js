@@ -56,7 +56,7 @@ const SignupForm = ({handleSignup}) => {
 
 
             
-            <form onSubmit={props.handleSubmit}>
+            <form onSubmit={props.handleSubmit}  className='form-style'>
                 <div className='username-wrapper'>
                     <label htmlFor='username' />
                     <i className="fa fa-user icon"></i>
@@ -119,12 +119,12 @@ const SignupForm = ({handleSignup}) => {
                 </div>
                 <div className='cancel-signup-wrapper'>
                     <div className='cancel-signup' onClick={handleSignup}>Cancel</div>
-                    <button className='signup-submit' disabled={loading ? true : false} value={loading ? (<div >Loading...></div>) : 'Submit' } type='submit' />
+                    <button className='signup-submit' disabled={loading ? true : false} type='submit' >{loading ? (<div><SyncLoader /></div>) : 'Submit' }</button>
                   
                 </div>
             </form>
             {error && (<div className='reducer-error'>{error}</div>)}
-            {success && (<div className='reducer-success'>You have successfully created an account</div>)}
+            {success && (<div className='reducer-success'>You have successfully created an account. click cancel to exist</div>)}
         </div>
     </div>
         )}

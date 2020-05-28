@@ -7,6 +7,13 @@ import images from './reducer/images'
 import singleImage from './reducer/singleImageReducer'
 import {composeWithDevTools} from 'redux-devtools-extension'
 
+
+// the combine reducers
+const reducers = combineReducers({
+  auth,
+ images,
+  singleImage
+})
 // redux-persist configuration
 const persistConfig = {
     key: 'root',
@@ -15,13 +22,9 @@ const persistConfig = {
   }
    
 
-// the combine reducers
-const reducers = combineReducers({
-    auth,
-   images,
-    singleImage
-})
+
  
 const persistedReducer = persistReducer(persistConfig, reducers)
-export const store = createStore(persistedReducer, composeWithDevTools(applyMiddleware(thunk)))
-export const persistor = persistStore(store)
+
+export let store = createStore(persistedReducer, composeWithDevTools(applyMiddleware(thunk)))
+export let persistor = persistStore(store)

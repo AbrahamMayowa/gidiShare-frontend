@@ -62,7 +62,7 @@ const LoginForm = ({handleLogin}) => {
 
             <div className='signup'>Login</div>
             
-            <form onSubmit={props.handleSubmit}>
+            <form onSubmit={props.handleSubmit} className='form-style'>
                 <div className='username-wrapper'>
                     <label htmlFor='username' />
                     <i className="fa fa-user icon"></i>

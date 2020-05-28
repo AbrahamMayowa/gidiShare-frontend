@@ -1,13 +1,28 @@
+
+
 .password-wrapper, .username-wrapper, .image-wrapper{
     display: flex;
     flex-direction: row;
     width: 100%;
     justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    border: 1px solid #eca1a6;
+    background: #eca1a6;
     
+}
+
+.form-style{
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 input[type='file']{
     display: none;
+    
   }
 
 .customed-upload { 
@@ -17,6 +32,7 @@ input[type='file']{
     width: 80%;
     padding: 6px 12px;
     height: 24px;
+ 
 }
 
 .upload-label{
@@ -40,10 +56,11 @@ input[type='file']{
 
 
 .icon{
-    padding: 10px;
-    background: #eca1a6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: white;
-    width: 8%;
+    width: 17%;
 }
 
 input{
@@ -51,17 +68,18 @@ input{
     padding: 10px;
     outline: none;
     height: 25px;
-    border: 2px solid #eca1a6;
+  
 
 }
 
 .cancel-signup-wrapper{
+    width: 100%;
     display: flex;
     justify-content: space-between;
 }
 
 .signup-submit{
-  
+    width: 100px;
     text-align: center;
     background-color: #eca1a6;
    font-weight: 700;
@@ -110,7 +128,7 @@ input{
     justify-content: center;
     align-items: center;
     width: 90%;
-    height: 70%;
+    height: 400px;
     border-radius: 12px;
     position: fixed;
 }
@@ -130,10 +148,25 @@ input{
 }
 
 .reducer-error{
-    color: red; 
+    font-size: 13px;
+    color: red;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .reducer-success{
     color: rgb(80, 172, 80);
-    font-family: sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+@media only screen and (min-width: 700px) {
+    .form_control{
+        height: 450px;
+        width: 50%;
+    }
+
+    .form-style{
+        width: 300px;
+    }
 }

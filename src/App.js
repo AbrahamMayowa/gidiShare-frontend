@@ -10,7 +10,7 @@ import ScreenWrapper from './screen/ScreenWrapper'
 function App() {
   return (
     <Provider store={store}>
-      <PersistGate loading={<Loading />} persistor={persistor}>
+      <PersistGate loading={null} persistor={persistor}>
        <ScreenWrapper />
       </PersistGate >
   </Provider>
