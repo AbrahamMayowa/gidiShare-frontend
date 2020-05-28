@@ -98,16 +98,15 @@ const UploadImage = (props) => {
         }
     }
     return (
-
-        <div className="form-wrapper">
-        <div className="form_control">
-            <div className='signup'>Upload Photo</div>
+        <div className='upload-wrapper'>
+        <div className="form-main">
+            <div className='upload'>Upload Photo</div>
             
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className='form-control'>
                 <div className='category-wrapper'>
-                        <label htmlFor='category-option'>Image category</label>
                         <select name="category" onChange={handleChange} className='category'>
-                            <option selected value="love">Love</option>
+                        <option value="" disabled selected>Image Category</option>
+                            <option value="love">Love</option>
                             <option value="celebration">Celebration</option>
                             <option value="happiness">Happiness</option>
                             <option value="sadness">Sadness</option>
@@ -122,8 +121,7 @@ const UploadImage = (props) => {
                 </div>
 
                 <div className='description-wrapper'>
-                    <label htmlFor='description'>Caption</label>
-                   <TextareaAutosize name='description' rows={6} onChange={handleChange} className='description' />
+                    <textarea name='description' onChange={handleChange} className='description'>Caption</textarea>
                 </div>
                 <div className='form-error'>
                     {uploadData.description.error ? (
@@ -142,17 +140,13 @@ const UploadImage = (props) => {
                 </div>
                 <div className='form-error'>
                 {uploadData.image.error ? uploadData.image.error : null }
-                
-                {uploadData.image.value && (<div className='image-name'>{uploadData.image.value.name}</div>)}
                 </div>
-                <div className='cancel-signup-wrapper'>
-                    <button className='upload-submit' disabled={loading ? true : false} type='submit'>{loading ? <div style={{color: 'black', fontSize: 15, fontWeight: 'bold'}}>Loading...</div> : 'Submit'}</button>
-                
-                </div>
+        
+                    <button className='upload-submit' disabled={loading ? true : false} type='submit'>{loading ? <div style={{color: 'black', fontSize: 15, fontWeight: 'bold'}}><SyncLoader /></div> : 'Submit'}</button>
             </form>
             {error && (<div className='reducer-error'>{error}</div>)}
         </div>
-    </div>
+        </div>
     )
 }
 

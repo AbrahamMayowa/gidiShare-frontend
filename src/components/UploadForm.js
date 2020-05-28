@@ -101,12 +101,11 @@ const UploadImage = ({handleUpload}) => {
     }
     return (
 
-        <div className="form-wrapper">
-        <div className="form_control">
+        <div className="form-main">
             <div className='signup'>Upload Photo</div>
             
-            <form onSubmit={handleSubmit}>
-                <div className='category-wrapper'>
+            <form onSubmit={handleSubmit} className='upload-control'>
+             
                         <label htmlFor='category-option'>Image category</label>
                         <select name="category" onChange={handleChange} className='category'>
                             <option selected value="Love">Love</option>
@@ -121,12 +120,10 @@ const UploadImage = ({handleUpload}) => {
                     {uploadData.category.error ? 
                     (<div>{uploadData.category.error}</div>): null}
                 </div>
-                </div>
 
-                <div className='description-wrapper'>
                     <label htmlFor='description'>Caption</label>
                    <TextareaAutosize name='description' rows={6} onChange={handleChange} className='description' />
-                </div>
+    
                 <div className='form-error'>
                     {uploadData.description.error ? (
                         <div>{uploadData.description.error}</div> 
@@ -154,7 +151,6 @@ const UploadImage = ({handleUpload}) => {
                 </div>
             </form>
             {error && (<div className='reducer-error'>{error}</div>)}
-        </div>
     </div>
     )
 }

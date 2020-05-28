@@ -28,7 +28,7 @@ const Header = (props)=>{
         const propsImage = props.userImageUrl
         let userImage = "/avatar.svg"
         if(propsImage){
-            userImage = `/static/${propsImage}`
+            userImage = propsImage
         }
         setUserImageUrl(userImage)
         
@@ -48,8 +48,8 @@ const Header = (props)=>{
             </div>
 
             <div className='share-image' onClick={handleRedirect}>
-            <img src='/shareFile.png' alt='share a image' /> 
-            <div className='photo-string'>Photo</div>
+            <i className="fas fa-upload header-icon"></i>
+            <div className='photo-string'>Upload</div>
             </div>
         </div>
     )
